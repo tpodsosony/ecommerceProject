@@ -1,0 +1,2 @@
+class Craft < Product
+end
