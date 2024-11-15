@@ -7,15 +7,45 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-name = show_info['name'] 
-overview = show_info['overview']
-number_of_episodes = show_info['number_of_episodes']
-number_of_seasons = show_info['number_of_seasons']
-new_show_detail = new_show.create_show_detail!(
-  name: name,
-  overview: overview,
-  number_of_episodes: number_of_episodes,
-  number_of_seasons: number_of_seasons
-)
+
+cat = Catagory.create!(name: "Fantasy")
+
+malazan = ["Gardens of the Moon", "Deadhouse Gates", "Memories of Ice", "House of Chains", "Midnight Tides", "The Bonehunters", "Reapers Gale", "Toll the Hounds", "Dust of Dreams", "The Crippled God"]
+author = "Steven Erikson"
+description = "A book in the 'Malazan: Book of the Fallen' series."
+price = 15.00
+type = "Book"
+
+malazan.each do |name|
+  cat.products.create!(
+    name: name,
+    author: author,
+    description: description,
+    price: price,
+    type: type
+  )
+end
+
+4.times do
+  name = Faker::Book.genre
+  catag = Catagory.find_or_create_by!(name: name)
+  25.times do
+    name = Faker::Book.title
+    author = Faker::Book.author
+    price = rand(5000..100_000).to_i
+    description = Faker::Hipster.sentence(word_count: rand(4..8))
+    catag.products.create!(
+      name: name,
+      author: author,
+      description: description,
+      price: price,
+      type: type
+    )
+  end
+end
+
+

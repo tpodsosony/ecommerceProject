@@ -64,3 +64,7 @@ gem 'activeadmin'
 gem 'devise'
 
 gem 'sassc'
+
+gem 'faker'
+
+gem 'ransack'
