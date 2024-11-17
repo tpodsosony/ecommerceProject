@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+    validates :name, presence: true
+    validates :price, presence: true
     belongs_to :catagory
 
     def self.ransackable_attributes(auth_object = nil)

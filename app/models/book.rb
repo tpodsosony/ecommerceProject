@@ -7,4 +7,5 @@ class Book < Product
     def self.ransackable_associations(auth_object = nil)
         ["catagory"]
       end
+
 end

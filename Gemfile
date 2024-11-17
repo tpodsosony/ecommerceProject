@@ -68,3 +68,5 @@ gem 'sassc'
 gem 'faker'
 
 gem 'ransack'
+
+gem 'kaminari'
