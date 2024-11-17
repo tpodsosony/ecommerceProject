@@ -4,6 +4,6 @@ class CatagoriesController < ApplicationController
   end
 
   def show
-    @catergory = Catagory.find(params[:id])
+    @category = Catagory.find(params[:id])
   end
 end

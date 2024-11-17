@@ -1,2 +1,6 @@
-<h1>Catagories#select</h1>
-<p>Find me in app/views/catagories/select.html.erb</p>
+<h1>Categories#select</h1>
+<table>
+<% @category.products.each do |product| %>
+  <%= render "books/book", book: product %>
+<% end %>
+</table>
