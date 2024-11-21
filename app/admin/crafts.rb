@@ -5,7 +5,7 @@ ActiveAdmin.register Craft do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :brand, :price, :description, :catagory_id, :type
+   permit_params :name, :brand, :price, :description, :catagory_id, :type, :image
   #
   # or
   #
