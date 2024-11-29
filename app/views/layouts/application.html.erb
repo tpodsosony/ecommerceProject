@@ -31,7 +31,7 @@
               <ul> 
                 <% cart.each do |product| %> 
                   <li>
-                    <%= product.name %> <%= link_to '❌', cart_path(product), method: :delete %>
+                    <%= product.name %> x <%= session["cart"].length %>
                   </li>
                 <% end %>
               </ul>

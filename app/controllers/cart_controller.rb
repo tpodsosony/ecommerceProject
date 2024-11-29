@@ -13,7 +13,7 @@ class CartController < ApplicationController
 
   def destroy
     if session[:cart].include?(@product.id)
-      session[:cart].delete(@product.id)
+      session[:cart].delete_at(session[:cart].index @product.id)
       flash[:notice] = "#{@product.name} Item was removed from cart!"
     end
 
