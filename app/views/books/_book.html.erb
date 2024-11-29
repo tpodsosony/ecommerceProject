@@ -5,17 +5,21 @@
     <td>Price: <%= book.price %></td>
 
     <td>
-    <% if cart.include?(book) %>
-        <%= button_to cart_path(book), method: :delete do%>
-            Remove from cart
-        <% end %>
-    <% else %>
+    
 
         <%= form_with url: cart_index_path(book) do %>
             <%= hidden_field_tag(:id, book.id) %>
             <%= button_tag "Add to cart" %>
         <% end %>
-    <% end %>
+    </td>
+    <td>
+        <% if cart.include?(book) %>
+
+        <%= button_to cart_path(book), method: :delete do%>
+            Remove from cart
+        <% end %>
+        </tr>
+     <% end %>
     </td>
 
 

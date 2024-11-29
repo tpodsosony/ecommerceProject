@@ -2,10 +2,10 @@ class CartController < ApplicationController
   before_action :get_product, only: %i[create destroy]
 
   def create
-    unless session[:cart].include?(@product.id)
+    #unless session[:cart].include?(@product.id)
       session[:cart] << @product.id
       flash[:notice] = "#{@product.name} Item added to cart"
-    end
+    #end
 
 
     redirect_to root_path
