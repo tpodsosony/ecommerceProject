@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cart
-    Book.find(session[:cart])
+    Product.find(session[:cart])
   end
+
 end

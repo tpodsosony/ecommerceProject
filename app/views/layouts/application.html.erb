@@ -27,11 +27,20 @@
           <li>
             Cart 
             <% if cart.present? %> 
-              <sup><%= cart.size %></sup>
+              <sup><%= session[:cart].length %></sup>
               <ul> 
                 <% cart.each do |product| %> 
                   <li>
-                    <%= product.name %> <%= link_to '❌', cart_path(product), method: :delete %>
+                    <tr>
+                      <td><%= product.name %> x <%= session[:cart].count(product.id) %> <%= button_to cart_path(product), method: :delete do%>Remove from cart</td>
+                      <% end %>
+                      <td>
+                      <%= form_with do |form| %>
+                        <%= form.number_field 1, in: 1.0..20.0, step: 1, value: session[:cart].count(product.id) %>
+                      <% end %>
+                      </td>
+                    </tr>
+                    
                   </li>
                 <% end %>
               </ul>
