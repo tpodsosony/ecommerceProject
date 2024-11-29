@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
   helper_method :cart
 
   def intizialize_session
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def cart
-    Product.find(session[:cart])
+    session[:cart].map do |product_id, quantity|
+      product = Product.find_by(id: product_id)
+      if product
+        { product: product, quantity: quantity }  # Return only valid products
+      end
+    end
   end
 
 end
