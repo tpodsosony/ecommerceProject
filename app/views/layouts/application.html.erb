@@ -17,7 +17,28 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+
   <%= render "layouts/navbar" %>
+  <nav>
+        <ul>
+          <li>
+            Cart 
+            <% if cart.present? %> 
+              <sup><%= cart.size %></sup>
+              <ul> 
+                <% cart.each do |product| %> 
+                  <li>
+                    <%= product.name %> <%= link_to '❌', cart_path(product), method: :delete %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
 
   <body>
     <%= yield %>
