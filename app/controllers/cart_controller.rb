@@ -3,10 +3,10 @@ class CartController < ApplicationController
 
   def create
 
-    if session[:cart].key?(@product.id)
-      session[:cart][@product.id] += 1
+    if session[:cart].key?(@product.id.to_s)
+      session[:cart][@product.id.to_s] += 1
     else
-      session[:cart][@product.id] = 1
+      session[:cart][@product.id.to_s] = 1
     end
 
     Rails.logger.info "Cart contents: #{session[:cart].inspect}"
@@ -17,11 +17,13 @@ class CartController < ApplicationController
   end
 
   def destroy
-    if session[:cart].include?(@product.id)
-      session[:cart].delete_at(session[:cart].index(@product.id) || session[:cart].length)
-      flash[:notice] = "#{@product.name} Item was removed from cart!"
+    if session[:cart].key?(@product.id.to_s)
+      session[:cart].delete(@product.id.to_s)
+      flash[:notice] = "#{@product.name} was removed from cart!"
     end
 
+    Rails.logger.info "Cart contents: #{session[:cart].inspect}"
+    Rails.logger.info "Cart class: #{session[:cart].class}" 
     redirect_to root_path
   end
 
@@ -30,8 +32,11 @@ class CartController < ApplicationController
     new_quantity = params[:quantity].to_i
 
     if session[:cart].key?(product_id)
-      session[:cart][product_id] = new_quantity if new_quantity > 0
+      session[:cart][product_id] = new_quantity
     end
+
+    Rails.logger.info "Cart contents: #{session[:cart].inspect}"
+    Rails.logger.info "Cart class: #{session[:cart].class}" 
 
     flash[:notice] = "Cart updated successfully!"
 
@@ -43,9 +48,5 @@ class CartController < ApplicationController
   def get_product
     product_id = params[:id].to_i
     @product = Product.find(product_id)
-  end
-
-  def get_quantity
-    @quantity = Product.count(@product.id)
   end
 end

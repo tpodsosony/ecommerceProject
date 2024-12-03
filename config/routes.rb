@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "books#index"
   resources :books
   resources :catagories
-  resources :cart, only: %i[create destroy] 
+  resources :cart, only: %i[create destroy patch] 
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

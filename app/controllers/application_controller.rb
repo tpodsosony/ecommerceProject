@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     session[:cart].map do |product_id, quantity|
       product = Product.find_by(id: product_id)
       if product
-        { product: product, quantity: quantity }  # Return only valid products
+        { product: product, quantity: quantity } 
       end
-    end
+    end.compact
   end
 
 end
