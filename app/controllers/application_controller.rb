@@ -6,10 +6,16 @@ class ApplicationController < ActionController::Base
   helper_method :cart
 
   def intizialize_session
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def cart
-    Book.find(session[:cart])
+    session[:cart].map do |product_id, quantity|
+      product = Product.find_by(id: product_id)
+      if product
+        { product: product, quantity: quantity } 
+      end
+    end.compact
   end
+
 end

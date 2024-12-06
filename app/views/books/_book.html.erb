@@ -13,7 +13,7 @@
         <% end %>
     </td>
     <td>
-        <% if cart.include?(book) %>
+        <% if cart.include?(book.id.to_s) %>
 
         <%= button_to cart_path(book), method: :delete do%>
             Remove from cart
