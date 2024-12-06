@@ -42,11 +42,13 @@
                         <%= form.submit "Update Quantity" %>
                       <% end %>
                       </td>
-                    </tr>
                     
                   </li>
                 <% end %>
               </ul>
+              <%= form_with url: checkout_create_path, method: :post do %>
+                <%= button_tag "Buy Now" %>
+              <% end %>
             <% end %>
           </li>
         </ul>
