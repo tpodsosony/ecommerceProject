@@ -43,6 +43,8 @@ class CartController < ApplicationController
     redirect_to root_path 
   end
 
+
+
   private 
 
   def get_product

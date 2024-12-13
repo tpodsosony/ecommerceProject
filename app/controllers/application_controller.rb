@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :intizialize_session
   helper_method :cart
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
   def intizialize_session
     session[:cart] ||= {}
   end
@@ -16,6 +19,16 @@ class ApplicationController < ActionController::Base
         { product: product, quantity: quantity } 
       end
     end.compact
+  end
+
+  def total_quantity
+    session[:cart].values.sum
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
 end
