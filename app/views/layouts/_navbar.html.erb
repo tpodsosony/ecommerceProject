@@ -1,6 +1,25 @@
-<div class="topnav">
-  <a class="active" href="/">Home</a>
-  <a href="/catagories">Categories</a>
-  <a href="/contact">Contact</a>
-  <a href="/about">About</a>
-</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/catagories">Catagories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+    </ul>
+    <% if customer_signed_in? %>
+          <%= link_to "Sign out", destroy_customer_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to log out?'} %>
+        <% else %>
+          <%= link_to "Sign in", new_customer_session_path %>
+        <% end %>
+  </div>
+
+
+
+</nav>
