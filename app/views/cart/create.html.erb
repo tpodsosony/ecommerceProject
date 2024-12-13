@@ -1,2 +1,19 @@
 <h1>Cart#create</h1>
-<p></p>
+<p>
+<ul> 
+                <% cart.each do |product| %> 
+                  <li>
+                    <tr>
+                      <td><%= product[:product].name %> x <%= product[:quantity] %> 
+                        <%= button_to cart_path(product[:product]), method: :delete do%>Remove from cart
+                        <% end %>
+                      </td>
+                      <td>
+                      <%= form_with url: cart_path(product[:product]), method: :patch do |form| %>
+                        <%= form.number_field :quantity, in: 1..20, step: 1, value: product[:quantity] %>
+                        <%= form.submit "Update Quantity" %>
+                      <% end %>
+                      </td>
+                    
+                  </li>
+</p>

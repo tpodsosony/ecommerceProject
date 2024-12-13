@@ -43,6 +43,10 @@ class CartController < ApplicationController
     redirect_to root_path 
   end
 
+  def index
+    @cart = cart
+  end
+
 
 
   private 

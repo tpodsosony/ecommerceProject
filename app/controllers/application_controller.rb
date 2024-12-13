@@ -21,10 +21,6 @@ class ApplicationController < ActionController::Base
     end.compact
   end
 
-  def total_quantity
-    session[:cart].values.sum
-  end
-
   protected
 
   def configure_permitted_parameters
