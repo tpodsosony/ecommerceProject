@@ -77,4 +77,4 @@ gem "google-cloud-storage", "~> 1.11", require: false
 
 gem "stripe"
 
-gem "bootsrap"
+gem "bootstrap"
