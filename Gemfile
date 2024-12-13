@@ -73,7 +73,7 @@ gem 'kaminari'
 
 gem "image_processing"
 
-gem "google-cloud-storage", "~> 1.11", require: false
+gem "google-cloud-storage", "~> 1.54", require: false
 
 gem "stripe"
 
