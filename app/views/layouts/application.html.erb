@@ -46,7 +46,7 @@
                   </li>
                 <% end %>
               </ul>
-              <%= form_with url: checkout_create_path, method: :post do %>
+              <%= form_with url: checkout_create_path, method: :post, data: { turbo: false } do %>
                 <%= button_tag "Buy Now" %>
               <% end %>
             <% end %>
