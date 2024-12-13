@@ -1,28 +1,18 @@
-    <tr class="table-content">
-    <td>Name: <%= link_to book.name, book %></td>
-    <td>Author: <%= book.author %></td>
-    <td>Description: <%= book.description %></td>
-    <td>Price: <%= book.price %></td>
-
-    <td>
-    
-
-        <%= form_with url: cart_index_path(book) do %>
-            <%= hidden_field_tag(:id, book.id) %>
-            <%= button_tag "Add to cart" %>
-        <% end %>
-    </td>
-    <td>
-        <% if cart.include?(book.id.to_s) %>
-
-        <%= button_to cart_path(book), method: :delete do%>
-            Remove from cart
-        <% end %>
-        </tr>
-     <% end %>
-    </td>
-
-
-    </tr>
-
-
+<!-- _book.html.erb -->
+<div class="col-md-4 mb-4"> <!-- 3 books per row on medium screens -->
+  <div class="card" style="width: 18rem;">
+    <% if book.image.attached? %>
+      <%= image_tag book.image, class: "card-img-top", alt: "Card image cap" %>
+    <% else %>
+      <img class="card-img-top" src="path_to_placeholder_image.jpg" alt="Placeholder image">
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"> <%= book.name %></h5>
+      <p class="card-text"><%= book.description %></p>
+      <%= form_with url: cart_index_path(book), method: :post do %>
+        <%= hidden_field_tag(:id, book.id) %>
+        <%= button_tag "Add to cart", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

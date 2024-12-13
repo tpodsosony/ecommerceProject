@@ -78,3 +78,4 @@ gem "google-cloud-storage", "~> 1.11", require: false
 gem "stripe"
 
 gem "bootstrap"
+gem "cssbundling-rails", "~> 1.4"
