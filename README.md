@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version: ruby 3.1.2p20
 
-Things you may want to cover:
+* Configuration: Run 'bundle install' to make sure all necessaties are available
 
-* Ruby version
+* Database initialization: Run 'rails db:seed'
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Deployment instructions: Use 'rails s' to deploy on localhost
